@@ -26,7 +26,7 @@
     "url": "https://media.cplegacy.net/assets/media/swf/games/waves/CatchinWaves.swf",
     "substitutions": [
       {
-        "replaceLines": [9848, 9856],
+        "replaceLines": [9804, 9812],
         "withLines": [
           "      push 'coinsCountTotal'",
           "      push 5000",
