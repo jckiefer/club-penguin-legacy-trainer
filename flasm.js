@@ -44,10 +44,10 @@ exports.setupFlasm = async () => {
   }
 
   const flasmArchivePath = path.join(flasmDir, flasmArchiveName);
-  await downloadFile(
-    path.join("http://www.nowrap.de/download", flasmArchiveName),
-    flasmArchivePath
-  );
+  // FIX: Use string concatenation for URLs, not path.join
+  const downloadUrl = "http://www.nowrap.de/download/" + flasmArchiveName;
+  
+  await downloadFile(downloadUrl, flasmArchivePath);
 
   return new Promise((resolve, reject) => {
     if (flasmArchiveName.endsWith("zip")) {
