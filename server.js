@@ -14,7 +14,13 @@ const setupRequestListener = () => {
   }
   
   session.defaultSession.webRequest.onBeforeRequest((details, callback) => {
-    const hack = hacksByUrl[details.url];
+    // FIX: Remove query parameters (like ?v=123) before checking the map
+    const urlObj = new URL(details.url);
+    // Reconstruct the URL without search params (the ?... part)
+    const cleanUrl = urlObj.origin + urlObj.pathname;
+
+    const hack = hacksByUrl[cleanUrl];
+    
     if (!hack || !currentConfig[hack.id]) {
       callback({});
       return;
